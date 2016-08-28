@@ -1,6 +1,6 @@
 # name: simple sidebar plugin
 # about: shows a curated home in a different style
-# version: 0.1
+# version: 0.2
 # authors: Benjamin Kampmann
 
 
