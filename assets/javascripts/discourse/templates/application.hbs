@@ -1,19 +1,31 @@
-{{render "header"}}
 
-<div id='main-outlet' {{bind-attr class=backgroundClass}}>
-  <div {{bind-attr class=":global-side-bar :side-bar-wrap hideSidebar:no-side-bar"}}>
-    <aside class="side-bar-left">{{view "sidebar-left"}}</aside>
-    <section class="main-outlet-wrap">{{outlet}}</section>
-    <aside class="side-bar-right">{{view "sidebar-right"}}</aside>
+{{site-header canSignUp=canSignUp
+              showCreateAccount="showCreateAccount"
+              showLogin="showLogin"
+              showKeyboard="showKeyboardShortcutsHelp"
+              toggleMobileView="toggleMobileView"
+              toggleAnonymous="toggleAnonymous"
+              logout="logout"
+              showSearchHelp="showSearchHelp"}}
+
+<div id="main-outlet" class="wrap wrap-test">
+  <div class="container">
+    {{#if showTop}}
+      {{custom-html "top"}}
+    {{/if}}
+    {{global-notice}}
+    {{create-topics-notice}}
   </div>
+  {{outlet}}
   {{render "user-card"}}
 </div>
 
+{{plugin-outlet "above-footer"}}
 {{#if showFooter}}
   {{custom-html "footer"}}
 {{/if}}
+{{plugin-outlet "below-footer"}}
 
 {{render "modal"}}
 {{render "topic-entrance"}}
 {{render "composer"}}
-
